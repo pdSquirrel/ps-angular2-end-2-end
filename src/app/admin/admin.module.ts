@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AdminComponent } from './adminComponent/admin.component';
 import { AdminMenuComponent } from "./adminMenu/admin-menu.component";
 import { LoginComponent } from "./login/login.component";
-import { SignupComponent } from "./signup/signup.component";
+import { SignupComponent } from "./signup/sign-up.component";
 
 import { UserService } from './adminShared/user.service';
 

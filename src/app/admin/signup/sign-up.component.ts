@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  templateUrl: './signup.component.html',
-  styleUrls: ['./singup.component.css']
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.css']
 })
 
 export class SignupComponent {}

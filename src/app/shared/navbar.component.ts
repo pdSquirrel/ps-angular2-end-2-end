@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
       <div>
         <ul class="menu">
           <li class="nav-menu">
-            <a href="#">Menu Item 1</a>
+            <a [routerLink]="['/admin']">Admin Area</a>
           </li>
         </ul>
       </div>
