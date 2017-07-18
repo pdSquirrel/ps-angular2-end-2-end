@@ -10,6 +10,8 @@ import * as firebase from 'firebase';
 @Injectable()
 export class UserService implements CanActivate {
   userLoggedIn: boolean = false;
+  loggedInUser: string;
+  authUser: any;
 
   constructor( private router: Router) {
     // Initialize Firebase
@@ -36,4 +38,38 @@ export class UserService implements CanActivate {
     return false;
   }
 
+  register(email: string, password: string) {
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .catch((error) => {
+        alert(`${error.message} Please try again`);
+      });
+  }
+
+  verifyUser() {
+    this.authUser = firebase.auth().currentUser;
+
+    if(this.authUser) {
+      alert(`Welcome ${this.authUser.email}`);
+      this.loggedInUser = this.authUser.email;
+      this.userLoggedIn = true;
+      this.router.navigate(['/admin']);
+    }
+  }
+
+  login(loginEmail: string, loginPassword: string) {
+    firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword)
+      .catch((error) => {
+        alert(`${error.message} Unable to login. Try again!`);
+      });
+  }
+
+  logout() {
+    this.userLoggedIn = false;
+    firebase.auth().signOut()
+      .then(() => {
+        alert('Logged Out!');
+      }, (error) => {
+        alert(`{error.message} Unable to logout. Try again!`);
+      });
+  }
 }
